@@ -49,13 +49,7 @@
 .stars{
     width: 100%;
     height: max-content;
-    /* padding: 100px; */
-    display: flex;
-    align-items: center;
-    color: rgb(31, 30, 30);
-    font-family: "Poppins", sans-serif;
     background-image: url(Stars.jpg);
-    color: whitesmoke;
     gap: 30%;
     justify-content: center;
 }
@@ -67,7 +61,6 @@
     align-items: center;
     color: rgb(31, 30, 30);
     font-family: "Poppins", sans-serif;
-    /* background-image: url(Stars.jpg); */
     color: whitesmoke;
     gap: 30%;
     justify-content: center;
@@ -140,4 +133,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (max-width: 945px) {
+    .navbar h4{
+        width: 17%;
+    }
+    .list{
+        width: 70%;
+    }
+    .addInfo{
+        width: 550px;
+    }
+    .overlay{
+        padding: 80px;
+        gap: 25%;
+    }
+    .divStar{
+       width: 350px;
+    }
+}
+
+@media screen and (max-width: 807px) {
+    .overlay{
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+    .addInfo{
+        width: 430px;
+    }
 }
