@@ -1,35 +1,22 @@
 
-
-
-// function displayActors (){
-//     fetch("https://swapi.dev/api/people")
-//     .then((response) => response.json())
-//     .then((data) => {
-//         const starsDiv = document.getElementById("starsDiv");
-//         data.results.forEach((item, index) => {
-//             const stars = `
-//         <div class="starsAct">
-//         <div class="profile"><img src="starProfile.jpeg" alt="${item.name}" />
-//         <div class="actor">${item.name}</div>
-//         <button class="view" id="view" onclick="displayModal()"> View More </button>
-//         </div>
-//         `
-//         starsDiv.innerHTML += stars;
-//         });
-//     })
-// }
-
 document.addEventListener("DOMContentLoaded", () => {
     const clickIcon = () => {
       const icon = document.getElementById("icon");
       const ulList = document.querySelector(".ul-name");
   
+      // Initialize the icon with the down arrow
+      icon.innerHTML = `<i class="bi bi-caret-down-fill"></i>`;
+  
       icon.addEventListener("click", () => {
-        if (!ulList) return; 
-
+        if (!ulList) return;
+  
         ulList.classList.toggle("display");
-        if (ulList.classList.contains("ul-name")) {
+  
+        if (ulList.classList.contains("display")) {
           displayActors();
+          icon.innerHTML = `<i class="bi bi-caret-up-fill"></i>`;
+        } else {
+          icon.innerHTML = `<i class="bi bi-caret-down-fill"></i>`;
         }
       });
     };
@@ -38,49 +25,48 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch("https://swapi.dev/api/people")
         .then((response) => response.json())
         .then((data) => {
-          const starsDiv = document.getElementById("starsDiv");
-          let listItems = "";
-         
-          data.results.forEach((item) => {
-            listItems += `<li class="listSec" data-id="">${item.name}</li>`;
-          });
-
           const ulList = document.querySelector(".ul-name");
+          let listItems = "";
+  
+          data.results.forEach((item) => {
+            listItems += `<li class="listSec" id="">${item.name}</li>`;
+          });
+  
           if (ulList) {
             ulList.innerHTML = listItems;
+            displayInfo(data);
           }
-
-          displayInfo();
         })
         .catch((error) => console.error("Error fetching data:", error));
     };
-
-    const displayInfo = () => {
-        const list = document.querySelectorAll(".listSec")
-        list.forEach((item) => {
-           item.addEventListener("click", () => {
-           addInfo();
-           })
-        })
-    
+  
+    const displayInfo = (data) => {
+      const list = document.querySelectorAll(".listSec");
+      list.forEach((item) => {
+        item.addEventListener("click", () => {
+            const chosenName = item.textContent;
+          addInfo(data, chosenName); 
+        });
+      });
+    };
+  
+    const addInfo = (data, chosenName) => {
+      let addItems = "";
+      const addDiv = document.querySelector(".addInfo");
+  
+      const actor = data.results.find((indiv) => indiv.name === chosenName);
+      if(actor) {
+        addItems += `
+        <img src="starProfile.jpeg" alt="${actor.name}"/>
+          <div class="infoList">
+          <li style="font-weight: bolder;">${actor.name}</li>
+          <li>Gender: ${actor.gender}</li>
+          <li>Height: ${actor.height}m</li>
+          </div>
+        `;
     }
-
-    const addInfo = () => {
-        fetch("https://swapi.dev/api/people")
-        .then((response) => response.json())
-        .then((data) => {
-        let addItems = "";
-        const addDiv = document.querySelector(".addInfo");
-        data.results.forEach((indiv) => {
-            addItems  += `
-           <li>${indiv.name}</li>
-           <li>${indiv.gender}</li>
-           <li>${indiv.height}</li>
-                `
-        }) 
-        addDiv.innerHTML = addItems;
-    })
-    }
+    addDiv.innerHTML = addItems;
+      };
   
     clickIcon();
   });

@@ -14,7 +14,12 @@
     width: 100%;
     height: 650px;
     background-image: url(Star-wars.webp);
+    /* background-image: url(https://i.pinimg.com/236x/91/7a/af/917aaf1c13f4ccfed16a3cfbc959bc49.jpg); */
+    /* background-image: url(https://i.pinimg.com/236x/f0/3b/e4/f03be48ce8931fad8c3c417af386ec5a.jpg); */
+    /* background-image: url(https://i.pinimg.com/236x/7e/48/92/7e4892f6ae4fad8f42a65df3d874d6f8.jpg); */
     background-position: center;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
 }
 .navbar{
     width: 100%;
@@ -44,15 +49,33 @@
 .stars{
     width: 100%;
     height: max-content;
-    padding: 15px;
+    /* padding: 100px; */
+    display: flex;
+    align-items: center;
     color: rgb(31, 30, 30);
     font-family: "Poppins", sans-serif;
-    /* display: grid; */
-    /* grid-template-columns: repeat(4, 1fr); */
-    gap: 16px;
+    background-image: url(Stars.jpg);
+    color: whitesmoke;
+    gap: 30%;
     justify-content: center;
 }
+.overlay{
+    width: 100%;
+    height: 100%;
+    padding: 100px;
+    display: flex;
+    align-items: center;
+    color: rgb(31, 30, 30);
+    font-family: "Poppins", sans-serif;
+    /* background-image: url(Stars.jpg); */
+    color: whitesmoke;
+    gap: 30%;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.452);
+    background-blend-mode: darken;
+}
 .ul-name{
+    /* width: 100%; */
     list-style: none;
     display: none;
 }
@@ -62,63 +85,49 @@
 .display{
     display: block;
 }
+#icon{
+    font-size: 20px;
+    cursor: pointer;
+}
+.wrapInfo{
+    width: 300px;
+    height: max-content;
+    padding: 15px;
+}
+.divStar{
+    width: 300px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    /* -webkit-backdrop-filter: blur(5px) saturate(1.8); */
+    backdrop-filter: blur(4px) saturate(1);
+    border-radius: 5px;
+}
 .div-icons{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.starsAct{
-    width: 100%;
-    height: 400px;
-    /* border: solid red; */
+.addInfo{
+    width: 400px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* -webkit-backdrop-filter: blur(5px) saturate(1.8); */
+    backdrop-filter: blur(4px) saturate(1);
+    border-radius: 5px;
+}
+.addInfo img{
+    width: 30%;
+    height: 80%;
+    border-radius: 50%;
+}
+.infoList{
+    list-style: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: rgba(27, 27, 27, 0.753);
-}
-.profile{
-    width: 100%;
-    height: 75%;
-}
-.profile img{
-    width: 100%;
-    height: 100%;
-}
-.actor{
-    width: 100%;
-    margin-top: 15px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 18px;
-}
-.view{
-    width: 100%;
-    font-family: "Poppins", sans-serif;
-    background-color: transparent;
-    color: gold;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    margin-top: 2px;
-}
-.view:hover{
-    color: darkgoldenrod;
-}
-.modal{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    background-color: rgba(0, 0, 0, 0.712);
-}
-.innerModal{
-    width: 65%;
-    height: 85%;
-    background-color: whitesmoke;
-}
-.close{
-    color: red;
-    font-size: 50px;
+    gap: 10px;
 }
