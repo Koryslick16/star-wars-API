@@ -131,3 +131,13 @@
     flex-direction: column;
     gap: 10px;
 }
+.footer{
+    width: 100%;
+    height: 70px;
+    background-color: black;
+    color: whitesmoke;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
