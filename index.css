@@ -13,13 +13,12 @@
 .header{
     width: 100%;
     height: 650px;
-    background-image: url(Star-wars.webp);
-    /* background-image: url(https://i.pinimg.com/236x/91/7a/af/917aaf1c13f4ccfed16a3cfbc959bc49.jpg); */
-    /* background-image: url(https://i.pinimg.com/236x/f0/3b/e4/f03be48ce8931fad8c3c417af386ec5a.jpg); */
-    /* background-image: url(https://i.pinimg.com/236x/7e/48/92/7e4892f6ae4fad8f42a65df3d874d6f8.jpg); */
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-size: cover; */
+}
+.header img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 .navbar{
     width: 100%;
@@ -28,6 +27,7 @@
     color: white;
     justify-content: center;
     align-items: center;
+    background-image: url(Stars.jpg);
 }
 .navbar h4{
     width: 15%;
@@ -68,7 +68,6 @@
     background-blend-mode: darken;
 }
 .ul-name{
-    /* width: 100%; */
     list-style: none;
     display: none;
 }
@@ -134,6 +133,9 @@
     align-items: center;
     justify-content: center;
 }
+.menuBtn{
+    display: none;
+}
 
 @media screen and (max-width: 945px) {
     .navbar h4{
@@ -151,6 +153,46 @@
     }
     .divStar{
        width: 350px;
+    }
+}
+@media (max-width: 800px){
+    .navbar h4{
+        width: 30%;
+    }
+    .menuBtn{
+        width: 48%;
+        display: flex;
+        justify-content: right;
+        z-index: 999;
+        cursor: pointer;
+    }
+    .menuBtn i{
+        font-size: 40px;
+    }
+    .menuBtn i.active::before{
+        content: "\f00d";
+    }
+    .navbar .list{
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background-color: rgb(15, 15, 15);
+        padding-top: 80px;
+        transition: all 0.5s ease;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+        font-size: 25px;
+    }
+    .navbar .list.active{
+        left: 0;
+    }
+    .navbar .list li{
+        display: flex;
+        justify-content: center;
     }
 }
 
