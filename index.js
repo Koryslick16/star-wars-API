@@ -17,27 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch("https://swapi.dev/api/people")
             .then((response) => response.json())
             .then((data) => {
-                
-               let starDiv = document.getElementById("divStar")
+                let starDiv = document.getElementById("divStar");
                 let actorsContent = "";
+
+                // Construct HTML content for all actors
                 data.results.forEach((item, index) => {
                     actorsContent += `
-                    <img class="starImage" src= "${actorsImages[index].image}"/>
-                    <h4 id="starName" class="name">${item.name}</h4>
-                     <button class="view" id="view">View More</button>
-                    `
-                    starDiv.innerHTML = actorsContent;
-
-                    const viewButton = starDiv.querySelectorAll(".view");
-                    viewButton.forEach((each) => {
-                        each.addEventListener("click", () => {
-                            const name = each.getAttribute("data-name");
-                            addInfo(data, name);
-                        })
-                    })
-
+                        <img class="starImage" src="${actorsImages[index].image}" />
+                        <h4 id="starName" class="name">${item.name}</h4>
+                        <button class="view" data-name="${item.name}">View More</button>
+                    `;
                 });
-            })
+
+                starDiv.innerHTML = actorsContent;
+
+                const viewButtons = starDiv.querySelectorAll(".view");
+                viewButtons.forEach((each) => {
+                    each.addEventListener("click", () => {
+                        const name = each.getAttribute("data-name");
+                        addInfo(data, name);
+                    });
+                });
+            });
     };
 
     const modal = document.getElementById("modalBox");
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addInfo = (data, chosenName) => {
         const actor = data.results.find((indiv) => indiv.name === chosenName);
         const actorIndex = data.results.indexOf(actor); 
-        const actorImage = actorsImages[actorIndex].image;
+        const actorImage = actorsImages[actorIndex]?.image; // Use optional chaining to handle undefined case
 
         if (actor) {
             modal.style.display = "flex";
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
-            const closeButton = modalContent.querySelector(".close")
+            const closeButton = modalContent.querySelector(".close");
             closeButton.addEventListener("click", closeModal);
         }
     };
