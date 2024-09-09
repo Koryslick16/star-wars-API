@@ -198,6 +198,9 @@
     .footer{
         font-size: 14px;
     }
+    .menuBtn{
+        display: block;
+    }
     .navbar{
         display: none;
     }
