@@ -103,6 +103,9 @@
     padding-top: 2px;
     padding-bottom: 5px;
 }
+.wrapInfo:hover{
+
+}
 .close{
     font-size: 25px;
     background-color: transparent;
@@ -194,5 +197,8 @@
     }
     .footer{
         font-size: 14px;
+    }
+    .navbar{
+        display: none;
     }
 }
