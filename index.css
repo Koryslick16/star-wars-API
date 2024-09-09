@@ -86,6 +86,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+    padding-bottom: 60px;
 }
 .wrapInfo{
     width: 100%;
@@ -178,85 +179,15 @@
     display: none;
 }
 
-@media screen and (max-width: 945px) {
-    .navbar h4{
-        width: 17%;
-    }
-    .list{
-        width: 70%;
-    }
-    .addInfo{
-        width: 550px;
-    }
-    .overlay{
-        padding: 80px;
-        gap: 25%;
-    }
+@media screen and (max-width: 850px) {
     .divStar{
-       width: 350px;
-    }
-}
-@media (max-width: 800px){
-    .navbar h4{
-        width: 30%;
-    }
-    .menuBtn{
-        width: 48%;
-        display: flex;
-        justify-content: right;
-        z-index: 999;
-        cursor: pointer;
-    }
-    .menuBtn i{
-        font-size: 40px;
-    }
-    .menuBtn i.active::before{
-        content: "\f00d";
-    }
-    .navbar .list{
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        left: -100%;
-        top: 0;
-        background-color: rgb(15, 15, 15);
-        padding-top: 80px;
-        transition: all 0.5s ease;
-        font-family: "Poppins", sans-serif;
-        display: flex;
-        flex-direction: column;
-        z-index: 100;
-        font-size: 25px;
-    }
-    .navbar .list.active{
-        left: 0;
-    }
-    .navbar .list li{
-        display: flex;
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media screen and (max-width: 807px) {
-    .overlay{
-        display: flex;
-        flex-direction: column;
-        gap: 60px;
-    }
-    .addInfo{
-        width: 430px;
-    }
-}
-
-@media screen and (max-width: 460px) {
-    .navbar h4{
-        width: 50%;
-    }
-    .menuBtn{
-        width: 25%;
-    }
-    .addInfo{
-        width: 380px;
+@media screen and (max-width: 600px) {
+    .divStar{
+        grid-template-columns: repeat(1, 1fr);
     }
     .footer{
         font-size: 14px;
