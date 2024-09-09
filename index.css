@@ -64,6 +64,11 @@
     background-color: rgba(0, 0, 0, 0.452);
     background-blend-mode: darken;
 }
+.overlay h3{
+    font-size: 23px;
+    text-align: center;
+    padding-bottom: 20px;
+}
 .display{
     display: block;
 }
@@ -84,15 +89,17 @@
 }
 .wrapInfo{
     width: 100%;
-    height: 480px;
+    height: 500px;
     border-radius: 10px;
     backdrop-filter: blur(4px) saturate(1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 8px;
-    box-shadow: 0px 0px 10px 1px black;
+    box-shadow: 0px 0px 10px 1px rgb(41, 39, 39);
+    cursor: pointer;
+    padding-top: 2px;
 }
 .close{
     font-size: 25px;
@@ -101,9 +108,9 @@
     cursor: pointer;
 }
 .starImage{
-    width: 95%;
-    height: 75%;
-    border-radius: 15px;
+    width: 97%;
+    height: 85%;
+    border-radius: 10px;
 }
 .modalBox{
     width: 100%;
