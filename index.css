@@ -55,8 +55,7 @@
 .overlay{
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
+    padding-top: 100px;
     color: rgb(31, 30, 30);
     font-family: "Poppins", sans-serif;
     color: whitesmoke;
@@ -72,21 +71,28 @@
     font-size: 20px;
     cursor: pointer;
 }
-.wrapInfo{
-    width: 300px;
-    height: max-content;
-    padding: 15px;
-}
 .divStar{
-    width: 300px;
+    width: 100%;
     height: max-content;
+    justify-content: center;
+    padding: 15px;
+    /* -webkit-backdrop-filter: blur(5px) saturate(1.8); */
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+.wrapInfo{
+    width: 100%;
+    height: 480px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px) saturate(1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-    /* -webkit-backdrop-filter: blur(5px) saturate(1.8); */
-    backdrop-filter: blur(4px) saturate(1);
-    border-radius: 5px;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0px 0px 10px 1px black;
 }
 .close{
     font-size: 25px;
@@ -95,8 +101,9 @@
     cursor: pointer;
 }
 .starImage{
-    width: 100%;
-    height: 60%;
+    width: 95%;
+    height: 75%;
+    border-radius: 15px;
 }
 .modalBox{
     width: 100%;
@@ -107,7 +114,7 @@
 }
 .view{
     width: 40%;
-    height: 35px;
+    height: 5px;
     border-radius: 5px;
     border: none;
     background-color: transparent;

@@ -23,9 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Construct HTML content for all actors
                 data.results.forEach((item, index) => {
                     actorsContent += `
+                    <div class="wrapInfo">
                         <img class="starImage" src="${actorsImages[index].image}" />
                         <h4 id="starName" class="name">${item.name}</h4>
                         <button class="view" data-name="${item.name}">View More</button>
+                        </div>
                     `;
                 });
 
