@@ -146,7 +146,7 @@
     padding-top: 20px;
     gap: 20px;
     cursor: pointer;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.582);
     color: white;
     /* -webkit-backdrop-filter: blur(5px) saturate(1.8); */
     backdrop-filter: blur(4px) saturate(1);
