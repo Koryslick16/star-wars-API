@@ -56,7 +56,6 @@
 .overlay{
     width: 100%;
     height: 100%;
-    padding: 100px;
     display: flex;
     align-items: center;
     color: rgb(31, 30, 30);
@@ -66,13 +65,6 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.452);
     background-blend-mode: darken;
-}
-.ul-name{
-    list-style: none;
-    display: none;
-}
-.listSec{
-    cursor: pointer;
 }
 .display{
     display: block;
@@ -97,10 +89,16 @@
     backdrop-filter: blur(4px) saturate(1);
     border-radius: 5px;
 }
-.div-icons{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.starImage{
+    width: 100%;
+    height: 60%;
+}
+.modalBox{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
 }
 .addInfo{
     width: 400px;

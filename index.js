@@ -1,73 +1,76 @@
+  
+const actorsImages = [
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/1.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/2.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/3.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/4.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/5.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/6.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/7.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/8.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/9.jpg" },
+    { image: "https://vieraboschkova.github.io/swapi-gallery/static/assets/img/people/10.jpg" }
+];
 
 document.addEventListener("DOMContentLoaded", () => {
-    const clickIcon = () => {
-      const icon = document.getElementById("icon");
-      const ulList = document.querySelector(".ul-name");
-  
-      // Initialize the icon with the down arrow
-      icon.innerHTML = `<i class="bi bi-caret-down-fill"></i>`;
-  
-      icon.addEventListener("click", () => {
-        if (!ulList) return;
-  
-        ulList.classList.toggle("display");
-  
-        if (ulList.classList.contains("display")) {
-          displayActors();
-          icon.innerHTML = `<i class="bi bi-caret-up-fill"></i>`;
-        } else {
-          icon.innerHTML = `<i class="bi bi-caret-down-fill"></i>`;
-        }
-      });
-    };
-  
     const displayActors = () => {
-      fetch("https://swapi.dev/api/people")
-        .then((response) => response.json())
-        .then((data) => {
-          const ulList = document.querySelector(".ul-name");
-          let listItems = "";
-  
-          data.results.forEach((item) => {
-            listItems += `<li class="listSec" id="">${item.name}</li>`;
-          });
-  
-          if (ulList) {
-            ulList.innerHTML = listItems;
-            displayInfo(data);
-          }
-        })
-        .catch((error) => console.error("Error fetching data:", error));
+        fetch("https://swapi.dev/api/people")
+            .then((response) => response.json())
+            .then((data) => {
+                
+               let starDiv = document.getElementById("divStar")
+                let actorsContent = "";
+                data.results.forEach((item, index) => {
+                    actorsContent += `
+                    <img class="starImage" src= "${actorsImages[index].image}"/>
+                    <h4 id="starName" class="name">${item.name}</h4>
+                     <button class="view" id="view">View More</button>
+                    `
+                    starDiv.innerHTML = actorsContent;
+
+                    const viewButton = starDiv.querySelectorAll(".view");
+                    viewButton.forEach((each) => {
+                        each.addEventListener("click", () => {
+                            const name = each.getAttribute("data-name");
+                            addInfo(data, name);
+                        })
+                    })
+
+                });
+            })
     };
-  
-    const displayInfo = (data) => {
-      const list = document.querySelectorAll(".listSec");
-      list.forEach((item) => {
-        item.addEventListener("click", () => {
-            const chosenName = item.textContent;
-          addInfo(data, chosenName); 
-        });
-      });
-    };
-  
+
+    const modal = document.getElementById("modalBox");
+    const modalContent = document.querySelector(".addInfo");
+
     const addInfo = (data, chosenName) => {
-      let addItems = "";
-      const addDiv = document.querySelector(".addInfo");
-  
-      const actor = data.results.find((indiv) => indiv.name === chosenName);
-      if(actor) {
-        addItems += `
-        <img src="starProfile.jpeg" alt="${actor.name}"/>
-          <div class="infoList">
-          <li style="font-weight: bolder;">${actor.name}</li>
-          <li>Gender: ${actor.gender}</li>
-          <li>Height: ${actor.height}m</li>
-          </div>
-        `;
-    }
-    addDiv.innerHTML = addItems;
-      };
-  
-    clickIcon();
-  });
-  
+        const actor = data.results.find((indiv) => indiv.name === chosenName);
+        const actorIndex = data.results.indexOf(actor); 
+        const actorImage = actorsImages[actorIndex].image;
+
+        if (actor) {
+            modal.style.display = "flex";
+            modal.style.alignItems = "center";
+            modal.style.justifyContent = "center";
+
+            modalContent.innerHTML = `
+                <img src="${actorImage}" alt="${actor.name}" />
+                <button class="close">&cross;</button>
+                <div class="infoList">
+                    <li style="font-weight: bolder;">${actor.name}</li>
+                    <li>Gender: ${actor.gender}</li>
+                    <li>Height: ${actor.height}m</li>
+                </div>
+            `;
+
+            const closeButton = modalContent.querySelector(".close")
+            closeButton.addEventListener("click", closeModal);
+        }
+    };
+
+    const closeModal = () => {
+        modal.style.display = "none";
+    };
+
+    displayActors();
+});
