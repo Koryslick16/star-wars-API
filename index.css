@@ -100,6 +100,20 @@
     top: 0;
     display: none;
 }
+.view{
+    width: 40%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    color: gold;
+}
+.view:hover{
+    color: rgb(94, 81, 6);
+}
 .addInfo{
     width: 400px;
     height: 150px;
