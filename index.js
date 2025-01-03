@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 let starDiv = document.getElementById("divStar");
                 let actorsContent = "";
 
-                // Construct HTML content for all actors
                 data.results.forEach((item, index) => {
                     actorsContent += `
                     <div class="wrapInfo">
@@ -49,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const addInfo = (data, chosenName) => {
         const actor = data.results.find((indiv) => indiv.name === chosenName);
         const actorIndex = data.results.indexOf(actor); 
-        const actorImage = actorsImages[actorIndex]?.image; // Use optional chaining to handle undefined case
+        const actorImage = actorsImages[actorIndex]?.image; 
 
         if (actor) {
             modal.style.display = "flex";

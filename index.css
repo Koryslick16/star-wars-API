@@ -103,9 +103,6 @@
     padding-top: 2px;
     padding-bottom: 5px;
 }
-.wrapInfo:hover{
-
-}
 .close{
     font-size: 25px;
     background-color: transparent;
@@ -127,6 +124,8 @@
     position: fixed;
     top: 0;
     display: none;
+    background-color: rgba(0, 0, 0, 0.616);
+    
 }
 .view{
     width: 40%;
@@ -204,4 +203,5 @@
     .list{
         display: none;
     }
+      
 }
